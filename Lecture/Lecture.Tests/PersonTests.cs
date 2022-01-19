@@ -1,11 +1,11 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Lecture1.Tests
-{
+namespace Lecture.Tests;
     [TestClass]
     public class PersonTests
     {
-        Person Person = new();
+        Person Person = new("Inigo Montoya");
         string UserName = "";
         string Password = "";
 
@@ -41,5 +41,13 @@ namespace Lecture1.Tests
             bool result = Person.Login(UserName, Password);
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void Name_GivenNameIsNull_ThrowException()
+        {
+            Person person = new Person("Inigo Montoya");
+
+            // The ! at the end is used to override the compiler when given a warning for null assignments
+            person.Name = null!;
+        }
     }
-}

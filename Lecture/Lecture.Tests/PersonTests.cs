@@ -43,6 +43,10 @@ namespace Lecture.Tests;
         }
 
         [TestMethod]
+        // Can add ignore to tell compiler to ignore a specific test
+        // usefull when test isnt being implemented yet, but you want to keep code
+        // [Ignore("Ignored because not yet implemented")]
+        // inside () you list a reason as to why its being ignored
         public void Name_GivenNameIsNull_ThrowException()
         {
             Person person = new Person("Inigo Montoya");

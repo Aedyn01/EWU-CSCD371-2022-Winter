@@ -15,6 +15,19 @@
             Name = name;
         }
 
+        // Works the same as saying return
+        public string ToText => $"{nameof(Name)}: {Name}; {nameof(DateOfBirth)}: {DateOfBirth}";
+
+        //public int Age 
+        //{ 
+        //    get
+        //    {
+        //        return DateOnly.FromDateTime(DateTime.Now);
+        //    } 
+        //}    
+
+        public DateOnly DateOfBirth { get; set; }
+
         public string? MiddleName { get; set; }    
 
         private string? _Name;
@@ -22,6 +35,8 @@
         {
             // Can use => instead of curly brackets and "return"
             get => _Name!; 
+
+            // You can make only the setter private so that other classes cannot set, but they can get
             set 
             {
                 // Always use "nameof" when throwing exception

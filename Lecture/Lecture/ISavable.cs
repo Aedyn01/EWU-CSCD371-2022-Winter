@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lecture.Tests;
+namespace Lecture;
 public interface ISavable
 {
     string ToText();

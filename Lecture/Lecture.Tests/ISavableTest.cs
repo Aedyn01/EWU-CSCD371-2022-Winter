@@ -18,7 +18,15 @@ public class ISavableTest
     public void SimpleSave_GivenAThing_Sting()
     {
         ISavable thing = new Thing("Thing 1");
-        Assert.AreEqual<string>("Name: Thing 1; ", thing.ToText());
+        Assert.AreEqual<string>("Name: Thing 1", thing.ToText());
+    }
+
+    [TestMethod]
+    public void SimpleSave_GivenADocument_DocumentString()
+    {
+        Document thing = new Document("Thing 1");
+        // Cast thing to ISavable in order to access that method
+        Assert.AreEqual<string>("Name: Thing 1", ((ISavable)thing).ToText());
     }
 }
 

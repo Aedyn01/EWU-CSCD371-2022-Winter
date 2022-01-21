@@ -1,6 +1,6 @@
 ﻿namespace Lecture
 {
-    public class Person
+    public class Person : Thing, ISavable
     {
         // Always code a property, unless you MUST use a field
         // A property = fast runtime, a field = slow runtime
@@ -31,7 +31,9 @@
         public string? MiddleName { get; set; }    
 
         private string? _Name;
-        public string Name
+
+        // In order to override, the inherited class must have virtual keyword
+        public override string Name
         {
             // Can use => instead of curly brackets and "return"
             get => _Name!; 

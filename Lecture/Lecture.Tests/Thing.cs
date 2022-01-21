@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Lecture.Tests;
-public class Thing
+public class Thing : ISavable
 {
     public string Name { get; set; }
 

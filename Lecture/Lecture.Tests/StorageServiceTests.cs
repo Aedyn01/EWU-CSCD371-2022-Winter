@@ -18,6 +18,13 @@ public class StorageServiceTests
     }
 
     [TestMethod]
+    public void Sazve_GiveMockThing_Success()
+    {
+        MockThing mockSaveable = new("Inigo Montoya");
+        // StorageService storageService = new(mockSaveable);
+    }
+
+    [TestMethod]
     public void StorageService_GivenInMemoryStore_Success()
     {
         Mock<ISavable> mock = new();

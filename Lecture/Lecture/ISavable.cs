@@ -1,6 +1,6 @@
 ﻿namespace Lecture;
 public interface ISavable
 {
-    string? ToText();
+    string ToText();
 }
 

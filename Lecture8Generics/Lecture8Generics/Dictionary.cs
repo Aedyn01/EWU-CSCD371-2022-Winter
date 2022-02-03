@@ -1,5 +1,9 @@
 ﻿namespace Lecture8Generics
 {
+    // What this says is that we are creating a class,
+    // and to create this class we naeed to pass in these two values
+    // Can add a "where" clause to enforce that a key cant be null
+     
     public class Dictionary<TKey,TValue> 
         where TKey : notnull 
         where TValue : class

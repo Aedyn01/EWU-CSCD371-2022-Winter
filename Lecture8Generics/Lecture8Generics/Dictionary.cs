@@ -11,16 +11,43 @@
         private List<KeyValuePair<TKey,TValue>> _List = new();
         public void Add(TKey key,TValue value)
         {
+            if (KeyExists(key))
+                throw new ArgumentException("The key already exists");
+
             _List.Add(new KeyValuePair<TKey,TValue>(key, value));
         }
 
-        public TValue Get(TKey key)
-        {
-            foreach(var kvp in _List)
+        public TValue this[TKey key] 
+        { 
+            get
             {
-                if(key.Equals(kvp.Key))
+                foreach (var kvp in _List)
                 {
-                    return kvp.Value;
+                    if (key.Equals(kvp.Key))
+                    {
+                        return kvp.Value;
+                    }
+                }
+                throw new KeyNotFoundException($"{key} not in dictionary");
+            }
+
+            set
+            {
+                if (KeyExists(key))
+                    Remove(key);
+
+                Add(key, value);
+            }
+        }
+
+        public void Remove(TKey key)
+        {
+            foreach (var kvp in _List)
+            {
+                if (key.Equals(kvp.Key))
+                {
+                    _List.Remove(kvp);
+                    return;
                 }
             }
             throw new KeyNotFoundException($"{key} not in dictionary");
@@ -37,5 +64,7 @@
             }
             return false;
         }
+
+        public int Count { get { return _List.Count; } }
     }
 }

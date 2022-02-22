@@ -65,11 +65,7 @@ namespace Assignment
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
             Predicate<string> filter)
         {
-            //IEnumerable<(string FirstName, string LastName)> filtered = 
-            //return People.Where(item => item.EmailAddress.Equals(filter)).Select(item => (item.FirstName, item.LastName));
-            foreach(var person in People)
-                if(filter(person.EmailAddress)) 
-                    yield return (person.FirstName, person.LastName);           
+            return People.Where(item => filter(item.EmailAddress)).Select(item => (item.FirstName, item.LastName));         
         }
 
         // 6.

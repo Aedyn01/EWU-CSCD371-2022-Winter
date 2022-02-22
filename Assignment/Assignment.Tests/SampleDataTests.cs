@@ -66,12 +66,8 @@ public class SampleDataTests
     {
         SampleData sample = new();
 
-        //Predicate<string> test = sample.FilterByEmailAddress(delegate("pjenyns0@state.gov"));
-
-        //Priscilla,Jenyns,pjenyns0@state.gov
-        //IEnumerable<(string, string)> name = ("Priscilla", "Jenyns");
-        List<IPerson> name = sample.People.ToList();
         Predicate<string> email = (string e) => { return e == "pjenyns0@state.gov"; };
-        Assert.AreEqual<IEnumerable<(string, string)>>((name.First().FirstName, name.First().LastName) as IEnumerable<(string, string)>, sample.FilterByEmailAddress(email));
+
+        Assert.AreEqual<(string, string)>(("Priscilla", "Jenyns"), sample.FilterByEmailAddress(email).ToList()[0]);
     }
 }

@@ -83,8 +83,8 @@ Recommended But **Not** Required (in order of priority)
 
 7. Given the implementation of `Node` in Assignment5
 
-- Implement `IEnumerable<T>` to return all the items in the "circle" of items. ❌✔
-- Add an `IEnumberable<T> ChildItems(int maximum)` method to `Node` that returns the remaining items with a maximum number of items returned less than `maximum`.  
+- Implement `IEnumerable<T>` to return all the items in the "circle" of items. ✔
+- Add an `IEnumberable<T> ChildItems(int maximum)` method to `Node` that returns the remaining items with a maximum number of items returned less than `maximum`. ✔
 
 ## Extra Credit
 

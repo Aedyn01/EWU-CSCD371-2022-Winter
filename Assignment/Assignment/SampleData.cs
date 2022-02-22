@@ -66,7 +66,10 @@ namespace Assignment
             Predicate<string> filter)
         {
             //IEnumerable<(string FirstName, string LastName)> filtered = 
-            return People.Where(item => item.EmailAddress.Equals(filter)).Select(item => (item.FirstName, item.LastName));
+            //return People.Where(item => item.EmailAddress.Equals(filter)).Select(item => (item.FirstName, item.LastName));
+            foreach(var person in People)
+                if(filter(person.EmailAddress)) 
+                    yield return (person.FirstName, person.LastName);           
         }
 
         // 6.

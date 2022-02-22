@@ -70,6 +70,7 @@ namespace Assignment
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(
-            IEnumerable<IPerson> people) => throw new NotImplementedException();
+            IEnumerable<IPerson> people) =>
+            people.Select(person => person.Address.State).Distinct().Aggregate((s1, s2) => s1 + ", " + s2);
     }
 }

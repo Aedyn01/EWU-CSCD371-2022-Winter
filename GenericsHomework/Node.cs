@@ -4,7 +4,7 @@ public class Node<TVal> where TVal : notnull
 
     public Node(TVal val)
     {
-        Val = val;
+        Val = val ?? throw new ArgumentNullException($"Node<{typeof(TVal)}> value cannot be null");
         Next = this;
         
     }
@@ -31,14 +31,14 @@ public class Node<TVal> where TVal : notnull
         }        
     }
 
-    public void Clear()
-    {
         /*
-         * Only need to get rid of the link from the first
+         * Need only to get rid of the link from the first
          * node because only the first node can access the subsequent nodes,
          * thus leaving no more references to the objects created.
          * This is proven in GenericsHomeworkTests.Node_GarbageCollection()
         */
+    public void Clear()
+    {
         Next = this;
     }
 

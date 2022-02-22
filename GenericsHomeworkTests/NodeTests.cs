@@ -39,6 +39,18 @@ public class NodeTests
         Assert.AreEqual<int>(43, node.Next.Val);
 
     }
+    [TestMethod]
+    public void Node_AppendInsertsAfterOriginalNode()
+    {
+        Node<int> node = testHelper();
+        Assert.AreEqual<int>(45,node.Next.Val);
+    }
+    [TestMethod]
+    public void Node_MaintainsCircularLinkWithFourNodes()
+    {
+        Node<int> node = testHelper();
+        Assert.AreEqual<int>(42, node.Next.Next.Next.Next.Val);
+    }
 
     [TestMethod]
     public void Node_NextPropertyReferencesSelf()
@@ -53,13 +65,21 @@ public class NodeTests
     public void Node_GarbageCollection()
     {
         Node<int> node = testHelper();
-        WeakReference nodeRef = AnotherGarbageTestHelper(node);
+        WeakReference nodeRef = GarbageCollectionTestHelper(node);
         node.Clear();
 
         GC.Collect();
         bool isAlive = nodeRef.IsAlive;
 
         Assert.IsFalse(isAlive);  
+    }
+    [TestMethod]
+    public void Node_GenericConstructorThrowsErrorIfPassedNull()
+    {
+
+        Action action = () =>  new Node<string>(null!);
+        
+        Assert.ThrowsException<ArgumentNullException>(() => action.Invoke());
     }
 
     public Node<int> testHelper()
@@ -71,10 +91,12 @@ public class NodeTests
         return node;
     }
 
-    public WeakReference AnotherGarbageTestHelper(Node<int> node)
+    public WeakReference GarbageCollectionTestHelper(Node<int> node)
     {
         WeakReference nodeRef = new(node.Next);
         return nodeRef;
     }
+
+ 
 
 }
